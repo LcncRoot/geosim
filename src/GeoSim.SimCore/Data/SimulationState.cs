@@ -57,6 +57,12 @@ public sealed class SimulationState
     /// <summary>All manufacturing facilities.</summary>
     public ManufacturingFacility[] ManufacturingFacilities { get; set; } = [];
 
+    /// <summary>All population cohorts.</summary>
+    public PopulationCohort[] PopulationCohorts { get; set; } = [];
+
+    /// <summary>All military formations.</summary>
+    public MilitaryFormation[] MilitaryFormations { get; set; } = [];
+
     /// <summary>Spoilage rates per commodity per tick [0, 1].</summary>
     public double[] SpoilageRates { get; set; } = new double[10];
 

@@ -189,10 +189,12 @@ geosim/
 - [x] Unit tests (20 cases)
 
 ### Phase 8: Political System
-- [ ] Faction satisfaction calculation
-- [ ] Legitimacy updates
-- [ ] Red line violations
-- [ ] Unit tests
+- [x] Faction satisfaction calculation
+- [x] Legitimacy updates (convergence to weighted satisfaction)
+- [x] Red line violations with penalties
+- [x] Faction power dynamics
+- [x] Regional unrest and stability
+- [x] Unit tests (20 cases)
 
 ### Phase 9: Integration
 - [ ] Scenario loader
@@ -244,7 +246,7 @@ See `docs/equations.md` for full simulation equations and `docs/resources.md` fo
 
 ## Current Phase
 
-**Phase 8: Political System** — Next
+**Phase 9: Integration** — Next
 
 ## Resume Points
 

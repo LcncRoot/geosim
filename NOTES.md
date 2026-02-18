@@ -145,3 +145,27 @@ Standard ISIC Rev 4 classification. Key sectors for simulation:
 - Scaling by faction power makes small factions ignorable, large factions dangerous
 - Avoids continuous "legitimacy drain" that's hard to diagnose
 - Creates dramatic moments: "the military has lost confidence in your leadership"
+
+---
+
+## Phase 2: Data Model Decisions
+
+### Scalability for hundreds of countries
+
+User confirmed: this is a video game, eventually hundreds of countries.
+
+**Design decisions for scale:**
+
+1. **Integer IDs over string keys**: Countries and sectors identified by `int` index, not string codes like "USA" or "C26". String lookups are O(n) or hash overhead; int index is O(1) array access.
+
+2. **Arrays over dictionaries**: Where collection size is known (sectors per country = 50), use fixed arrays. `Sector[]` not `Dictionary<string, Sector>`.
+
+3. **Sector as struct**: Sectors are small, frequently accessed, and value semantics make sense. Struct avoids heap allocation per sector. With 50 sectors × hundreds of countries = tens of thousands of sectors, this matters.
+
+4. **Country as class**: Countries are larger, have identity, and are referenced from multiple places. Class is appropriate.
+
+5. **Pre-allocated buffers**: SimulationState pre-allocates arrays at initialization. No runtime collection resizing.
+
+6. **Lookup tables for names**: String names ("United States", "Computer and Electronics") stored in separate lookup arrays. Core simulation uses int IDs only; names are for display.
+
+7. **Consider ECS later**: If performance becomes critical, could refactor to Entity-Component-System pattern where all sectors of same type are stored contiguously. For now, OOP is clearer.

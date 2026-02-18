@@ -142,48 +142,61 @@ public static class IsicSector
 
     /// <summary>
     /// Maps each ISIC sector to its aggregated commodity type.
+    /// Based on equations.md commodity definitions.
     /// </summary>
     public static readonly Commodity[] ToCommodity =
     [
-        // A01-A03: Agriculture
-        Commodity.Agriculture, Commodity.Agriculture, Commodity.Agriculture,
-        // B05-B06: Energy (extraction)
+        // A01-A03: Food (Agriculture + Food products)
+        Commodity.Food, Commodity.Food, Commodity.Food,
+        // B05-B06: Energy (Mining - oil/gas/coal)
         Commodity.Energy, Commodity.Energy,
-        // B07-B09: Minerals
-        Commodity.Minerals, Commodity.Minerals, Commodity.Minerals,
-        // C10T12-C31T33: Manufacturing (except C26 which is Technology)
-        Commodity.Manufacturing, Commodity.Manufacturing, Commodity.Manufacturing,
-        Commodity.Manufacturing, Commodity.Manufacturing, Commodity.Manufacturing,
-        Commodity.Manufacturing, Commodity.Manufacturing, Commodity.Manufacturing,
-        Commodity.Manufacturing, Commodity.Manufacturing, Commodity.Manufacturing,
-        Commodity.Technology,  // C26: Computer, electronic, optical
-        Commodity.Manufacturing, Commodity.Manufacturing, Commodity.Manufacturing,
-        Commodity.Manufacturing, Commodity.Manufacturing, Commodity.Manufacturing,
-        // D: Energy (utilities)
+        // B07-B09: Metals (Metal ores, other mining)
+        Commodity.Metals, Commodity.Metals, Commodity.Metals,
+        // C10T12: Food (Food products, beverages, tobacco)
+        Commodity.Food,
+        // C13T15-C16: ConsumerGoods (Textiles, wood)
+        Commodity.ConsumerGoods, Commodity.ConsumerGoods,
+        // C17_18: ConsumerGoods (Paper, printing)
+        Commodity.ConsumerGoods,
+        // C19: Energy (Coke and refined petroleum)
         Commodity.Energy,
-        // E: Services (utilities)
+        // C20-C21: Chemicals (Chemicals, Pharma)
+        Commodity.Chemicals, Commodity.Chemicals,
+        // C22-C23: Chemicals (Rubber, plastics, non-metallic minerals)
+        Commodity.Chemicals, Commodity.Chemicals,
+        // C24A-C25: Metals (Basic metals, fabricated metals)
+        Commodity.Metals, Commodity.Metals, Commodity.Metals,
+        // C26: Electronics (Computer, electronic, optical)
+        Commodity.Electronics,
+        // C27-C28: IndustrialGoods (Electrical equipment, Machinery)
+        Commodity.IndustrialGoods, Commodity.IndustrialGoods,
+        // C29-C302T309: IndustrialGoods (Vehicles, transport equipment)
+        Commodity.IndustrialGoods, Commodity.IndustrialGoods, Commodity.IndustrialGoods,
+        // C31T33: ConsumerGoods (Furniture, other manufacturing)
+        Commodity.ConsumerGoods,
+        // D: Energy (Electricity and gas)
+        Commodity.Energy,
+        // E: Services (Water, sewerage, waste)
         Commodity.Services,
         // F: Construction
         Commodity.Construction,
-        // G: Services
-        Commodity.Services,
-        // H49-H53: Transport
-        Commodity.Transport, Commodity.Transport, Commodity.Transport,
-        Commodity.Transport, Commodity.Transport,
-        // I: Services
-        Commodity.Services,
-        // J58T60: Services
-        Commodity.Services,
-        // J61, J62_63: Technology
-        Commodity.Technology, Commodity.Technology,
-        // K: Finance
-        Commodity.Finance,
-        // L-N: Services
-        Commodity.Services, Commodity.Services, Commodity.Services,
-        // O: Defense (public administration includes military)
-        Commodity.Defense,
-        // P-T: Services
-        Commodity.Services, Commodity.Services, Commodity.Services,
-        Commodity.Services, Commodity.Services
+        // G-T: Services (all service sectors)
+        Commodity.Services, // G: Wholesale/retail
+        Commodity.Services, Commodity.Services, Commodity.Services, // H49-H51: Transport
+        Commodity.Services, Commodity.Services, // H52-H53: Warehousing, Postal
+        Commodity.Services, // I: Accommodation
+        Commodity.Services, // J58T60: Publishing
+        Commodity.Services, // J61: Telecom
+        Commodity.Services, // J62_63: IT services
+        Commodity.Services, // K: Finance
+        Commodity.Services, // L: Real estate
+        Commodity.Services, // M: Professional
+        Commodity.Services, // N: Administrative
+        Commodity.Services, // O: Public admin
+        Commodity.Services, // P: Education
+        Commodity.Services, // Q: Health
+        Commodity.Services, // R: Arts
+        Commodity.Services, // S: Other services
+        Commodity.Services  // T: Household
     ];
 }

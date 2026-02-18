@@ -1,0 +1,37 @@
+# .NET build outputs
+bin/
+obj/
+out/
+
+# IDE files
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+
+# Build artifacts
+*.nupkg
+*.snupkg
+
+# Editor swap files
+*.swp
+*~
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test results
+TestResults/
+*.trx
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# MRIO data files (too large for git)
+data/mrio/*.csv

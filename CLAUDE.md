@@ -150,12 +150,13 @@ geosim/
 - [x] Unit tests for data model
 
 ### Phase 3: Production System
-- [ ] Leontief production function
-- [ ] Soft Leontief bottleneck smoothing
-- [ ] Labor constraint
-- [ ] Infrastructure modifier
-- [ ] Value added calculation
-- [ ] Unit tests (6 cases)
+- [x] Leontief production function
+- [x] Soft Leontief bottleneck smoothing (α = 0.6)
+- [x] Labor constraint
+- [x] Infrastructure modifier
+- [x] Value added calculation
+- [x] Extraction facility output
+- [x] Unit tests (10 cases)
 
 ### Phase 4: Price System
 - [ ] Supply/demand price adjustment
@@ -236,7 +237,7 @@ See `docs/equations.md` for full simulation equations and `docs/resources.md` fo
 
 ## Current Phase
 
-**Phase 3: Production System** — Next
+**Phase 4: Price System** — Next
 
 ## Resume Points
 

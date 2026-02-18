@@ -174,10 +174,11 @@ geosim/
 - [x] Unit tests (13 cases)
 
 ### Phase 6: Labor System
-- [ ] Employment by sector
-- [ ] Unemployment calculation
-- [ ] Wage dynamics
-- [ ] Unit tests
+- [x] Employment by sector
+- [x] Unemployment calculation
+- [x] Wage dynamics (market tightness)
+- [x] Labor allocation and mobility
+- [x] Unit tests (15 cases)
 
 ### Phase 7: Fiscal System
 - [ ] Tax collection (income, corporate, tariff)
@@ -241,7 +242,7 @@ See `docs/equations.md` for full simulation equations and `docs/resources.md` fo
 
 ## Current Phase
 
-**Phase 6: Labor System** — Next
+**Phase 7: Fiscal System** — Next
 
 ## Resume Points
 

@@ -43,6 +43,23 @@ public sealed class SimulationState
     /// <summary>All factions across all countries.</summary>
     public Faction[] Factions { get; set; } = [];
 
+    /// <summary>All trade relations (bilateral pairs).</summary>
+    public TradeRelation[] TradeRelations { get; set; } = [];
+
+    // === Resource System ===
+
+    /// <summary>All resource deposits across all regions.</summary>
+    public ResourceDeposit[] Deposits { get; set; } = [];
+
+    /// <summary>All extraction facilities.</summary>
+    public ExtractionFacility[] ExtractionFacilities { get; set; } = [];
+
+    /// <summary>All manufacturing facilities.</summary>
+    public ManufacturingFacility[] ManufacturingFacilities { get; set; } = [];
+
+    /// <summary>Spoilage rates per commodity per tick [0, 1].</summary>
+    public double[] SpoilageRates { get; set; } = new double[10];
+
     // === Static Data (per country) ===
 
     /// <summary>
@@ -93,6 +110,56 @@ public sealed class SimulationState
             if (faction.CountryId == countryId)
                 yield return faction;
         }
+    }
+
+    /// <summary>Get resource deposit by ID.</summary>
+    public ResourceDeposit GetDeposit(int id) => Deposits[id];
+
+    /// <summary>Get extraction facility by ID.</summary>
+    public ExtractionFacility GetExtractionFacility(int id) => ExtractionFacilities[id];
+
+    /// <summary>Get manufacturing facility by ID.</summary>
+    public ManufacturingFacility GetManufacturingFacility(int id) => ManufacturingFacilities[id];
+
+    /// <summary>Get all deposits in a region.</summary>
+    public IEnumerable<ResourceDeposit> GetDepositsForRegion(int regionId)
+    {
+        foreach (var deposit in Deposits)
+        {
+            if (deposit.RegionId == regionId)
+                yield return deposit;
+        }
+    }
+
+    /// <summary>Get all extraction facilities in a region.</summary>
+    public IEnumerable<ExtractionFacility> GetExtractionFacilitiesForRegion(int regionId)
+    {
+        foreach (var facility in ExtractionFacilities)
+        {
+            if (facility.RegionId == regionId)
+                yield return facility;
+        }
+    }
+
+    /// <summary>Get all manufacturing facilities in a region.</summary>
+    public IEnumerable<ManufacturingFacility> GetManufacturingFacilitiesForRegion(int regionId)
+    {
+        foreach (var facility in ManufacturingFacilities)
+        {
+            if (facility.RegionId == regionId)
+                yield return facility;
+        }
+    }
+
+    /// <summary>Get trade relation between two countries (if exists).</summary>
+    public TradeRelation? GetTradeRelation(int fromCountryId, int toCountryId)
+    {
+        foreach (var relation in TradeRelations)
+        {
+            if (relation.FromCountryId == fromCountryId && relation.ToCountryId == toCountryId)
+                return relation;
+        }
+        return null;
     }
 
     // === Initialization ===

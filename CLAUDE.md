@@ -135,7 +135,7 @@ geosim/
 - [x] Initial commit
 
 ### Phase 2: Data Model
-- [x] Commodity enum (10 game commodities)
+- [x] Commodity enum (12 game commodities)
 - [x] Country class
 - [x] Region class
 - [x] Sector struct
@@ -159,11 +159,11 @@ geosim/
 - [x] Unit tests (10 cases)
 
 ### Phase 4: Price System
-- [ ] Supply/demand price adjustment
-- [ ] Price sensitivity clamping
-- [ ] Price smoothing
-- [ ] CPI calculation
-- [ ] Unit tests (6 cases)
+- [x] Supply/demand price adjustment
+- [x] Price sensitivity clamping
+- [x] Price smoothing
+- [x] CPI calculation
+- [x] Unit tests (9 cases)
 
 ### Phase 5: Trade System
 - [ ] Bilateral trade flows
@@ -195,22 +195,24 @@ geosim/
 - [ ] Main simulation loop
 - [ ] 52-tick stability test
 
-## Commodity Aggregation
+## Commodity System
 
-The 50 ISIC sectors aggregate into 10 game commodities:
+The 50 ISIC sectors aggregate into 12 game commodities:
 
-| ID | Commodity | OECD ICIO Mapping |
-|----|-----------|-------------------|
-| 0 | Food | Agriculture + Food products |
-| 1 | Energy | Mining (oil/gas/coal) + Utilities |
-| 2 | Metals | Basic metals + Metal products |
-| 3 | Chemicals | Chemicals + Pharma |
-| 4 | IndustrialGoods | Machinery + Electrical equipment |
-| 5 | Electronics | Computer/electronic/optical (semiconductors) |
-| 6 | ConsumerGoods | Textiles + Other manufacturing |
-| 7 | MilitaryGoods | Derived from IndustrialGoods + Electronics |
-| 8 | Services | All service sectors |
-| 9 | Construction | Construction |
+| ID | Commodity | Category | OECD ICIO Mapping |
+|----|-----------|----------|-------------------|
+| 0 | Agriculture | Raw | Crops, forestry, fishing |
+| 1 | RareEarths | Raw | Specialty mining (strategic) |
+| 2 | Petroleum | Raw | Crude oil and gas extraction |
+| 3 | Coal | Raw | Coal and lignite mining |
+| 4 | Ore | Raw | Metal ores mining |
+| 5 | Uranium | Raw | Nuclear fuel extraction |
+| 6 | Electricity | Manufactured | Power generation (non-stockpileable) |
+| 7 | ConsumerGoods | Manufactured | Textiles, food products, furniture |
+| 8 | IndustrialGoods | Manufactured | Machinery, chemicals, vehicles |
+| 9 | MilitaryGoods | Manufactured | Derived from industrial + electronics |
+| 10 | Electronics | Manufactured | Computer/electronic/optical (semiconductors) |
+| 11 | Services | Services | All service sectors (non-stockpileable) |
 
 See `docs/equations.md` for full simulation equations and `docs/resources.md` for resource/facility system.
 
@@ -229,7 +231,7 @@ See `docs/equations.md` for full simulation equations and `docs/resources.md` fo
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | 2026-02-17 | Use OECD ICIO 2022 as base data | Real-world technical coefficients ground the simulation |
-| 2026-02-17 | 10 game commodities (Food, Energy, Metals, etc.) | Aligned with equations.md spec |
+| 2026-02-17 | 12 game commodities (Agriculture, RareEarths, etc.) | Aligned with resource extraction model |
 | 2026-02-17 | Sector as struct, Country/Region as class | Sectors are small/hot-path; Countries have identity |
 | 2026-02-17 | Integer IDs over string keys | O(1) array access for hundreds of countries |
 | 2026-02-17 | Resource deposits + facilities model | Separate extraction (on deposits) from manufacturing (capital investment) |
@@ -237,7 +239,7 @@ See `docs/equations.md` for full simulation equations and `docs/resources.md` fo
 
 ## Current Phase
 
-**Phase 4: Price System** — Next
+**Phase 5: Trade System** — Next
 
 ## Resume Points
 

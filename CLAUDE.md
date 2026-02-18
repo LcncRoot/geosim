@@ -166,10 +166,12 @@ geosim/
 - [x] Unit tests (9 cases)
 
 ### Phase 5: Trade System
-- [ ] Bilateral trade flows
-- [ ] Tariff application
-- [ ] Trade balance tracking
-- [ ] Unit tests
+- [x] Bilateral trade flows
+- [x] Tariff application
+- [x] Trade balance tracking
+- [x] FX reserve updates
+- [x] Sanctions support
+- [x] Unit tests (13 cases)
 
 ### Phase 6: Labor System
 - [ ] Employment by sector
@@ -239,7 +241,7 @@ See `docs/equations.md` for full simulation equations and `docs/resources.md` fo
 
 ## Current Phase
 
-**Phase 5: Trade System** — Next
+**Phase 6: Labor System** — Next
 
 ## Resume Points
 

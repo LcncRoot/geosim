@@ -38,7 +38,7 @@ public static class ProductionSystem
         TechnicalCoefficientMatrix coefficients)
     {
         // First pass: calculate output for each sector
-        for (int s = 0; s < 10; s++)
+        for (int s = 0; s < CommodityConstants.Count; s++)
         {
             ref var sector = ref region.Sectors[s];
 
@@ -56,7 +56,7 @@ public static class ProductionSystem
         }
 
         // Second pass: consume inputs and calculate value added
-        for (int s = 0; s < 10; s++)
+        for (int s = 0; s < CommodityConstants.Count; s++)
         {
             ref var sector = ref region.Sectors[s];
 
@@ -122,7 +122,7 @@ public static class ProductionSystem
         double totalSatisfaction = 0;
         int inputCount = 0;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < CommodityConstants.Count; i++)
         {
             double coeff = coefficients[i, outputSector];
             if (coeff <= 0) continue; // This input not required
@@ -165,7 +165,7 @@ public static class ProductionSystem
         double output = sector.Output;
         if (output <= 0) return;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < CommodityConstants.Count; i++)
         {
             double coeff = coefficients[i, sectorIndex];
             if (coeff <= 0) continue;

@@ -8,9 +8,9 @@ public class ProductionSystemTests
     private static TechnicalCoefficientMatrix CreateTestMatrix()
     {
         var matrix = TechnicalCoefficientMatrix.CreateEmpty();
-        // Electronics (5) requires Energy (1) and Metals (2)
-        matrix[Commodity.Energy, Commodity.Electronics] = 0.10;
-        matrix[Commodity.Metals, Commodity.Electronics] = 0.15;
+        // Electronics requires Petroleum and Ore
+        matrix[Commodity.Petroleum, Commodity.Electronics] = 0.10;
+        matrix[Commodity.Ore, Commodity.Electronics] = 0.15;
         return matrix;
     }
 
@@ -39,8 +39,8 @@ public class ProductionSystemTests
     {
         // Given: full inputs available
         var region = CreateTestRegion();
-        region.Inventory[(int)Commodity.Energy] = 1000.0;
-        region.Inventory[(int)Commodity.Metals] = 1000.0;
+        region.Inventory[(int)Commodity.Petroleum] = 1000.0;
+        region.Inventory[(int)Commodity.Ore] = 1000.0;
 
         var matrix = CreateTestMatrix();
         ref var sector = ref region.Sectors[(int)Commodity.Electronics];
@@ -63,8 +63,8 @@ public class ProductionSystemTests
     {
         // Given: Energy at 50%, Metals at 100%
         var region = CreateTestRegion();
-        region.Inventory[(int)Commodity.Energy] = 5.0;   // Need 10 for 100 output
-        region.Inventory[(int)Commodity.Metals] = 1000.0;
+        region.Inventory[(int)Commodity.Petroleum] = 5.0;   // Need 10 for 100 output
+        region.Inventory[(int)Commodity.Ore] = 1000.0;
 
         var matrix = CreateTestMatrix();
         ref var sector = ref region.Sectors[(int)Commodity.Electronics];
@@ -90,8 +90,8 @@ public class ProductionSystemTests
     {
         // Given: zero energy
         var region = CreateTestRegion();
-        region.Inventory[(int)Commodity.Energy] = 0.0;
-        region.Inventory[(int)Commodity.Metals] = 1000.0;
+        region.Inventory[(int)Commodity.Petroleum] = 0.0;
+        region.Inventory[(int)Commodity.Ore] = 1000.0;
 
         var matrix = CreateTestMatrix();
         ref var sector = ref region.Sectors[(int)Commodity.Electronics];
@@ -116,8 +116,8 @@ public class ProductionSystemTests
     {
         // Given: no workers
         var region = CreateTestRegion();
-        region.Inventory[(int)Commodity.Energy] = 1000.0;
-        region.Inventory[(int)Commodity.Metals] = 1000.0;
+        region.Inventory[(int)Commodity.Petroleum] = 1000.0;
+        region.Inventory[(int)Commodity.Ore] = 1000.0;
 
         var matrix = CreateTestMatrix();
         ref var sector = ref region.Sectors[(int)Commodity.Electronics];
@@ -140,8 +140,8 @@ public class ProductionSystemTests
         // Given: infrastructure at 0.5
         var region = CreateTestRegion();
         region.InfrastructureFactor = 0.5;
-        region.Inventory[(int)Commodity.Energy] = 1000.0;
-        region.Inventory[(int)Commodity.Metals] = 1000.0;
+        region.Inventory[(int)Commodity.Petroleum] = 1000.0;
+        region.Inventory[(int)Commodity.Ore] = 1000.0;
 
         var matrix = CreateTestMatrix();
         ref var sector = ref region.Sectors[(int)Commodity.Electronics];
@@ -162,10 +162,10 @@ public class ProductionSystemTests
     {
         // Given: output and prices
         double output = 100.0;
-        double[] prices = new double[10];
+        double[] prices = new double[CommodityConstants.Count];
         prices[(int)Commodity.Electronics] = 10.0;  // Output price
-        prices[(int)Commodity.Energy] = 5.0;        // Input price
-        prices[(int)Commodity.Metals] = 8.0;        // Input price
+        prices[(int)Commodity.Petroleum] = 5.0;        // Input price
+        prices[(int)Commodity.Ore] = 8.0;        // Input price
 
         var matrix = CreateTestMatrix();
 
@@ -186,7 +186,7 @@ public class ProductionSystemTests
     {
         // Given: sector with no input requirements
         var matrix = TechnicalCoefficientMatrix.CreateEmpty();
-        double[] inventory = new double[10];
+        double[] inventory = new double[CommodityConstants.Count];
 
         // When: calculate soft Leontief
         double result = ProductionSystem.CalculateSoftLeontief(
@@ -204,7 +204,7 @@ public class ProductionSystemTests
         {
             Id = 0,
             Subtype = "coal",
-            ResourceType = Commodity.Energy,
+            ResourceType = Commodity.Coal,
             TotalReserves = 10000,
             Remaining = 10000,
             BaseYield = 10.0,
@@ -242,7 +242,7 @@ public class ProductionSystemTests
         {
             Id = 0,
             Subtype = "coal",
-            ResourceType = Commodity.Energy,
+            ResourceType = Commodity.Coal,
             TotalReserves = 10000,
             Remaining = 10000,
             BaseYield = 10.0,
@@ -280,7 +280,7 @@ public class ProductionSystemTests
         {
             Id = 0,
             Subtype = "coal",
-            ResourceType = Commodity.Energy,
+            ResourceType = Commodity.Coal,
             TotalReserves = 10000,
             Remaining = 0,  // Exhausted
             BaseYield = 10.0,

@@ -6,8 +6,8 @@ namespace GeoSim.SimCore.Data;
 /// </summary>
 public sealed class TechnicalCoefficientMatrix
 {
-    /// <summary>Number of commodities (always 10).</summary>
-    public const int Size = 10;
+    /// <summary>Number of commodities (always 12).</summary>
+    public const int Size = CommodityConstants.Count;
 
     /// <summary>
     /// The coefficient matrix.

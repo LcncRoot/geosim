@@ -16,8 +16,8 @@ public sealed class Region
 
     // === Production ===
 
-    /// <summary>Sectors in this region. Array indexed by commodity (0-9).</summary>
-    public Sector[] Sectors { get; } = new Sector[10];
+    /// <summary>Sectors in this region. Array indexed by commodity.</summary>
+    public Sector[] Sectors { get; } = new Sector[CommodityConstants.Count];
 
     /// <summary>
     /// Infrastructure factor [0.5, 1.2].
@@ -45,7 +45,7 @@ public sealed class Region
     public long AverageWage { get; set; }
 
     /// <summary>Wages by sector.</summary>
-    public long[] SectorWages { get; } = new long[10];
+    public long[] SectorWages { get; } = new long[CommodityConstants.Count];
 
     // === Political ===
 
@@ -61,13 +61,13 @@ public sealed class Region
     // === Inventory ===
 
     /// <summary>Commodity stockpiles in this region.</summary>
-    public double[] Inventory { get; } = new double[10];
+    public double[] Inventory { get; } = new double[CommodityConstants.Count];
 
     // === Demand ===
 
     /// <summary>Total demand per commodity from this region.</summary>
-    public double[] Demand { get; } = new double[10];
+    public double[] Demand { get; } = new double[CommodityConstants.Count];
 
     /// <summary>Total supply per commodity from this region.</summary>
-    public double[] Supply { get; } = new double[10];
+    public double[] Supply { get; } = new double[CommodityConstants.Count];
 }

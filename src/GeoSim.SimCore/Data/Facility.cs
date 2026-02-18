@@ -14,7 +14,7 @@ public struct CommodityBundle
 
     public CommodityBundle()
     {
-        Quantities = new double[10];
+        Quantities = new double[CommodityConstants.Count];
     }
 
     public double this[Commodity c]

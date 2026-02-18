@@ -7,9 +7,9 @@ public class DataModelTests
     [Fact]
     public void Commodity_HasCorrectValues()
     {
-        Assert.Equal(0, (int)Commodity.Food);
-        Assert.Equal(5, (int)Commodity.Electronics);
-        Assert.Equal(9, (int)Commodity.Construction);
+        Assert.Equal(0, (int)Commodity.Agriculture);
+        Assert.Equal(10, (int)Commodity.Electronics);
+        Assert.Equal(11, (int)Commodity.Services);
     }
 
     [Fact]
@@ -17,26 +17,26 @@ public class DataModelTests
     {
         var matrix = TechnicalCoefficientMatrix.CreateEmpty();
 
-        matrix[Commodity.Energy, Commodity.Electronics] = 0.06;
+        matrix[Commodity.Petroleum, Commodity.Electronics] = 0.06;
 
-        Assert.Equal(0.06, matrix[Commodity.Energy, Commodity.Electronics]);
-        Assert.Equal(0.06, matrix[1, 5]);
+        Assert.Equal(0.06, matrix[Commodity.Petroleum, Commodity.Electronics]);
+        Assert.Equal(0.06, matrix[2, 10]);
     }
 
     [Fact]
     public void TechnicalCoefficientMatrix_CalculateInputCost()
     {
         var matrix = TechnicalCoefficientMatrix.CreateEmpty();
-        matrix[Commodity.Energy, Commodity.Electronics] = 0.10;
-        matrix[Commodity.Metals, Commodity.Electronics] = 0.15;
+        matrix[Commodity.Petroleum, Commodity.Electronics] = 0.10;
+        matrix[Commodity.Ore, Commodity.Electronics] = 0.15;
 
-        Span<double> prices = stackalloc double[10];
-        prices[(int)Commodity.Energy] = 100.0;
-        prices[(int)Commodity.Metals] = 200.0;
+        Span<double> prices = stackalloc double[CommodityConstants.Count];
+        prices[(int)Commodity.Petroleum] = 100.0;
+        prices[(int)Commodity.Ore] = 200.0;
 
         // Producing 10 units of Electronics:
-        // Energy: 0.10 * 10 * 100 = 100
-        // Metals: 0.15 * 10 * 200 = 300
+        // Petroleum: 0.10 * 10 * 100 = 100
+        // Ore: 0.15 * 10 * 200 = 300
         // Total: 400
         double cost = matrix.CalculateInputCost(Commodity.Electronics, 10.0, prices);
 

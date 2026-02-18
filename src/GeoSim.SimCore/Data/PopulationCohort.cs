@@ -49,7 +49,7 @@ public sealed class PopulationCohort
     // These are multipliers on base consumption.
 
     /// <summary>Consumption multipliers by commodity for this cohort.</summary>
-    public double[] ConsumptionMultipliers { get; } = new double[10];
+    public double[] ConsumptionMultipliers { get; } = new double[CommodityConstants.Count];
 
     /// <summary>
     /// Get base consumption per capita for a commodity at a wealth level.
@@ -58,34 +58,35 @@ public sealed class PopulationCohort
     public static double GetBaseConsumption(WealthLevel wealth, Commodity commodity)
     {
         // Default consumption curves from spec
+        // Consumer commodities: Agriculture (food), Electricity, ConsumerGoods, Electronics, Services
         return (wealth, commodity) switch
         {
-            (WealthLevel.Subsistence, Commodity.Food) => 1.0,
-            (WealthLevel.Subsistence, Commodity.Energy) => 0.3,
+            (WealthLevel.Subsistence, Commodity.Agriculture) => 1.0,
+            (WealthLevel.Subsistence, Commodity.Electricity) => 0.3,
             (WealthLevel.Subsistence, Commodity.ConsumerGoods) => 0.1,
             (WealthLevel.Subsistence, Commodity.Electronics) => 0.0,
             (WealthLevel.Subsistence, Commodity.Services) => 0.1,
 
-            (WealthLevel.Poor, Commodity.Food) => 1.0,
-            (WealthLevel.Poor, Commodity.Energy) => 0.6,
+            (WealthLevel.Poor, Commodity.Agriculture) => 1.0,
+            (WealthLevel.Poor, Commodity.Electricity) => 0.6,
             (WealthLevel.Poor, Commodity.ConsumerGoods) => 0.3,
             (WealthLevel.Poor, Commodity.Electronics) => 0.1,
             (WealthLevel.Poor, Commodity.Services) => 0.3,
 
-            (WealthLevel.Middle, Commodity.Food) => 1.0,
-            (WealthLevel.Middle, Commodity.Energy) => 1.0,
+            (WealthLevel.Middle, Commodity.Agriculture) => 1.0,
+            (WealthLevel.Middle, Commodity.Electricity) => 1.0,
             (WealthLevel.Middle, Commodity.ConsumerGoods) => 0.8,
             (WealthLevel.Middle, Commodity.Electronics) => 0.5,
             (WealthLevel.Middle, Commodity.Services) => 1.0,
 
-            (WealthLevel.Wealthy, Commodity.Food) => 1.0,
-            (WealthLevel.Wealthy, Commodity.Energy) => 1.3,
+            (WealthLevel.Wealthy, Commodity.Agriculture) => 1.0,
+            (WealthLevel.Wealthy, Commodity.Electricity) => 1.3,
             (WealthLevel.Wealthy, Commodity.ConsumerGoods) => 1.5,
             (WealthLevel.Wealthy, Commodity.Electronics) => 1.2,
             (WealthLevel.Wealthy, Commodity.Services) => 2.0,
 
-            (WealthLevel.Rich, Commodity.Food) => 1.0,
-            (WealthLevel.Rich, Commodity.Energy) => 1.5,
+            (WealthLevel.Rich, Commodity.Agriculture) => 1.0,
+            (WealthLevel.Rich, Commodity.Electricity) => 1.5,
             (WealthLevel.Rich, Commodity.ConsumerGoods) => 2.0,
             (WealthLevel.Rich, Commodity.Electronics) => 2.0,
             (WealthLevel.Rich, Commodity.Services) => 3.5,

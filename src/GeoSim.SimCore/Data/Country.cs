@@ -99,10 +99,10 @@ public sealed class Country
     public long TradeBalance { get; set; }
 
     /// <summary>Import propensity per commodity [0, 1].</summary>
-    public double[] ImportPropensity { get; } = new double[10];
+    public double[] ImportPropensity { get; } = new double[CommodityConstants.Count];
 
     /// <summary>Export propensity per commodity [0, 1].</summary>
-    public double[] ExportPropensity { get; } = new double[10];
+    public double[] ExportPropensity { get; } = new double[CommodityConstants.Count];
 
     // === Political ===
 
@@ -145,16 +145,16 @@ public sealed class Country
     // === Market Prices ===
 
     /// <summary>Market prices per commodity in this country.</summary>
-    public double[] Prices { get; } = new double[10];
+    public double[] Prices { get; } = new double[CommodityConstants.Count];
 
     /// <summary>Smoothed display prices per commodity.</summary>
-    public double[] DisplayPrices { get; } = new double[10];
+    public double[] DisplayPrices { get; } = new double[CommodityConstants.Count];
 
     /// <summary>Initial prices for bound calculations.</summary>
-    public double[] InitialPrices { get; } = new double[10];
+    public double[] InitialPrices { get; } = new double[CommodityConstants.Count];
 
     // === Consumption basket weights for CPI ===
 
     /// <summary>Consumer basket weights per commodity (should sum to 1).</summary>
-    public double[] ConsumptionWeights { get; } = new double[10];
+    public double[] ConsumptionWeights { get; } = new double[CommodityConstants.Count];
 }

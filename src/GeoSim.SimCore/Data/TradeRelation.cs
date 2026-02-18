@@ -14,15 +14,15 @@ public sealed class TradeRelation
     // === Tariffs ===
 
     /// <summary>Tariff rates by commodity [0, 1]. Importer's tariff on exporter.</summary>
-    public double[] TariffRates { get; } = new double[10];
+    public double[] TariffRates { get; } = new double[CommodityConstants.Count];
 
     // === Trade Volumes ===
 
     /// <summary>Base trade volume by commodity (from MRIO data).</summary>
-    public double[] BaseTradeVolume { get; } = new double[10];
+    public double[] BaseTradeVolume { get; } = new double[CommodityConstants.Count];
 
     /// <summary>Current trade volume by commodity.</summary>
-    public double[] CurrentTradeVolume { get; } = new double[10];
+    public double[] CurrentTradeVolume { get; } = new double[CommodityConstants.Count];
 
     // === Relations ===
 

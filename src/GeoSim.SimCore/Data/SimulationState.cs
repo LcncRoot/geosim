@@ -64,7 +64,7 @@ public sealed class SimulationState
     public MilitaryFormation[] MilitaryFormations { get; set; } = [];
 
     /// <summary>Spoilage rates per commodity per tick [0, 1].</summary>
-    public double[] SpoilageRates { get; set; } = new double[10];
+    public double[] SpoilageRates { get; set; } = new double[CommodityConstants.Count];
 
     // === Static Data (per country) ===
 
@@ -77,12 +77,12 @@ public sealed class SimulationState
     /// Labor coefficients per commodity (workers per unit output).
     /// Same for all countries (could be per-country if needed).
     /// </summary>
-    public double[] LaborCoefficients { get; set; } = new double[10];
+    public double[] LaborCoefficients { get; set; } = new double[CommodityConstants.Count];
 
     /// <summary>
     /// Price sensitivities per commodity for price adjustment.
     /// </summary>
-    public double[] PriceSensitivities { get; set; } = new double[10];
+    public double[] PriceSensitivities { get; set; } = new double[CommodityConstants.Count];
 
     // === Lookup Helpers ===
 

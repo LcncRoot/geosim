@@ -146,26 +146,28 @@ public static class IsicSector
     /// </summary>
     public static readonly Commodity[] ToCommodity =
     [
-        // A01-A03: Food (Agriculture + Food products)
-        Commodity.Food, Commodity.Food, Commodity.Food,
-        // B05-B06: Energy (Mining - oil/gas/coal)
-        Commodity.Energy, Commodity.Energy,
-        // B07-B09: Metals (Metal ores, other mining)
-        Commodity.Metals, Commodity.Metals, Commodity.Metals,
-        // C10T12: Food (Food products, beverages, tobacco)
-        Commodity.Food,
+        // A01-A03: Agriculture (Crops, forestry, fishing)
+        Commodity.Agriculture, Commodity.Agriculture, Commodity.Agriculture,
+        // B05: Coal mining
+        Commodity.Coal,
+        // B06: Petroleum and gas
+        Commodity.Petroleum,
+        // B07-B09: Ore (Metal ores, other mining)
+        Commodity.Ore, Commodity.Ore, Commodity.Ore,
+        // C10T12: Agriculture/ConsumerGoods (Food products, beverages, tobacco)
+        Commodity.ConsumerGoods,
         // C13T15-C16: ConsumerGoods (Textiles, wood)
         Commodity.ConsumerGoods, Commodity.ConsumerGoods,
         // C17_18: ConsumerGoods (Paper, printing)
         Commodity.ConsumerGoods,
-        // C19: Energy (Coke and refined petroleum)
-        Commodity.Energy,
-        // C20-C21: Chemicals (Chemicals, Pharma)
-        Commodity.Chemicals, Commodity.Chemicals,
-        // C22-C23: Chemicals (Rubber, plastics, non-metallic minerals)
-        Commodity.Chemicals, Commodity.Chemicals,
-        // C24A-C25: Metals (Basic metals, fabricated metals)
-        Commodity.Metals, Commodity.Metals, Commodity.Metals,
+        // C19: Petroleum (Coke and refined petroleum)
+        Commodity.Petroleum,
+        // C20-C21: IndustrialGoods (Chemicals, Pharma)
+        Commodity.IndustrialGoods, Commodity.IndustrialGoods,
+        // C22-C23: IndustrialGoods (Rubber, plastics, non-metallic minerals)
+        Commodity.IndustrialGoods, Commodity.IndustrialGoods,
+        // C24A-C25: IndustrialGoods (Basic metals, fabricated metals)
+        Commodity.IndustrialGoods, Commodity.IndustrialGoods, Commodity.IndustrialGoods,
         // C26: Electronics (Computer, electronic, optical)
         Commodity.Electronics,
         // C27-C28: IndustrialGoods (Electrical equipment, Machinery)
@@ -174,12 +176,12 @@ public static class IsicSector
         Commodity.IndustrialGoods, Commodity.IndustrialGoods, Commodity.IndustrialGoods,
         // C31T33: ConsumerGoods (Furniture, other manufacturing)
         Commodity.ConsumerGoods,
-        // D: Energy (Electricity and gas)
-        Commodity.Energy,
+        // D: Electricity (Electricity and gas)
+        Commodity.Electricity,
         // E: Services (Water, sewerage, waste)
         Commodity.Services,
-        // F: Construction
-        Commodity.Construction,
+        // F: IndustrialGoods (Construction)
+        Commodity.IndustrialGoods,
         // G-T: Services (all service sectors)
         Commodity.Services, // G: Wholesale/retail
         Commodity.Services, Commodity.Services, Commodity.Services, // H49-H51: Transport

@@ -181,10 +181,12 @@ geosim/
 - [x] Unit tests (15 cases)
 
 ### Phase 7: Fiscal System
-- [ ] Tax collection (income, corporate, tariff)
-- [ ] Government spending
-- [ ] Debt dynamics
-- [ ] Unit tests
+- [x] Tax collection (income, corporate, VAT, tariff)
+- [x] Government spending by category
+- [x] Debt dynamics with budget balance
+- [x] Interest rate with debt risk premium
+- [x] GDP estimation
+- [x] Unit tests (20 cases)
 
 ### Phase 8: Political System
 - [ ] Faction satisfaction calculation
@@ -242,7 +244,7 @@ See `docs/equations.md` for full simulation equations and `docs/resources.md` fo
 
 ## Current Phase
 
-**Phase 7: Fiscal System** — Next
+**Phase 8: Political System** — Next
 
 ## Resume Points
 

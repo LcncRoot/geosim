@@ -129,24 +129,25 @@ geosim/
 
 ### Phase 1: Project Scaffolding
 - [x] Git repository initialized
-- [ ] .NET 8.0 solution structure
-- [ ] Directory structure created
-- [ ] Nullable reference types enabled
-- [ ] Initial commit
+- [x] .NET 8.0 solution structure
+- [x] Directory structure created
+- [x] Nullable reference types enabled
+- [x] Initial commit
 
 ### Phase 2: Data Model
-- [ ] Commodity enum (aggregated from 50 ISIC sectors)
-- [ ] Country record
-- [ ] Region record
-- [ ] Sector record
-- [ ] Faction record
-- [ ] TradeRelation record
-- [ ] PopulationCohort record
-- [ ] MilitaryFormation record
-- [ ] TechnicalCoefficientMatrix class
-- [ ] ScenarioConfig record
-- [ ] SimulationState class
-- [ ] TickSchedule enum/config
+- [x] Commodity enum (10 game commodities)
+- [x] Country class
+- [x] Region class
+- [x] Sector struct
+- [x] Faction class with red lines
+- [x] TradeRelation class
+- [x] PopulationCohort class with consumption curves
+- [x] MilitaryFormation class
+- [x] TechnicalCoefficientMatrix class
+- [x] ScenarioConfig class (JSON-loadable)
+- [x] SimulationState class
+- [x] Resource system: ResourceDeposit, ExtractionFacility, ManufacturingFacility
+- [x] Unit tests for data model
 
 ### Phase 3: Production System
 - [ ] Leontief production function
@@ -195,22 +196,22 @@ geosim/
 
 ## Commodity Aggregation
 
-The 50 ISIC sectors aggregate into 10 game commodities for player-facing simplicity:
+The 50 ISIC sectors aggregate into 10 game commodities:
 
-| Commodity | ISIC Sectors |
-|-----------|--------------|
-| Agriculture | A01, A02, A03 |
-| Energy | B05, B06, D |
-| Minerals | B07, B08, B09 |
-| Manufacturing | C10T12 through C31T33 |
-| Construction | F |
-| Services | G through T (excluding transport) |
-| Transport | H49, H50, H51, H52, H53 |
-| Technology | C26, J61, J62_63 |
-| Finance | K |
-| Defense | Subset of C, O |
+| ID | Commodity | OECD ICIO Mapping |
+|----|-----------|-------------------|
+| 0 | Food | Agriculture + Food products |
+| 1 | Energy | Mining (oil/gas/coal) + Utilities |
+| 2 | Metals | Basic metals + Metal products |
+| 3 | Chemicals | Chemicals + Pharma |
+| 4 | IndustrialGoods | Machinery + Electrical equipment |
+| 5 | Electronics | Computer/electronic/optical (semiconductors) |
+| 6 | ConsumerGoods | Textiles + Other manufacturing |
+| 7 | MilitaryGoods | Derived from IndustrialGoods + Electronics |
+| 8 | Services | All service sectors |
+| 9 | Construction | Construction |
 
-The full 50-sector technical coefficient matrix is used internally; aggregation happens only for UI/reporting.
+See `docs/equations.md` for full simulation equations and `docs/resources.md` for resource/facility system.
 
 ## Coding Standards
 
@@ -227,11 +228,15 @@ The full 50-sector technical coefficient matrix is used internally; aggregation 
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | 2026-02-17 | Use OECD ICIO 2022 as base data | Real-world technical coefficients ground the simulation |
-| 2026-02-17 | 50 internal sectors, 10 game commodities | Full economic fidelity internally, simplified player interface |
+| 2026-02-17 | 10 game commodities (Food, Energy, Metals, etc.) | Aligned with equations.md spec |
+| 2026-02-17 | Sector as struct, Country/Region as class | Sectors are small/hot-path; Countries have identity |
+| 2026-02-17 | Integer IDs over string keys | O(1) array access for hundreds of countries |
+| 2026-02-17 | Resource deposits + facilities model | Separate extraction (on deposits) from manufacturing (capital investment) |
+| 2026-02-17 | Stockpiles with spoilage | Enable blockade gameplay; Services can't stockpile |
 
 ## Current Phase
 
-**Phase 1: Project Scaffolding** — In Progress
+**Phase 3: Production System** — Next
 
 ## Resume Points
 
